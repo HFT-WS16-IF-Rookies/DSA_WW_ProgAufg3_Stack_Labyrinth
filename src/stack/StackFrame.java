@@ -29,6 +29,7 @@ package stack;
  * 
  * nach jeder Aktion wird der aktuelle Stack angezeigt.
  */
+import de.hft.wiest_wolf.ArrayStack;
 import java.io.*;
 
 public class StackFrame {
@@ -44,7 +45,7 @@ public class StackFrame {
 
 
 		Object val;								
-		Stack stack = new Stack();	
+		Stack stack = new ArrayStack();
 
 		System.out.println(stack.version() + "\n");
 		System.out.println("Befehl eingeben:");

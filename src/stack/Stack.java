@@ -13,8 +13,8 @@
  * Hausübung 3: ADT Stack
  * 
  * ------------------------------------------------*/
-
 package stack;
+
 /*
  * Aufgabe 1.a - Stack Implementierung als Array mit Exception-Handling
  * 
@@ -37,59 +37,72 @@ package stack;
  *  Zusatzaufgabe: Wie könnten Sie die Methode toString ebenfalls mit O(1) realisieren? 
  */
 
-public class Stack{
-	
-	
-	// Implementierung der Methoden hier ...
-	
-	
-	public String version(){		// gibt eine Versionsnummer zurück
-		// diese Methode dient dazu, die verschiedenen Implementierungen zu unterscheiden;
-		// für jede neue Implementierung muss der Text angepasst werden.
-			return "Aufgabe 1.a - Stack; Implementierung als Array mit Exception-Handling";
-			// return "Version 1.b - Stack; Implementierung als verkettete Liste mit Exception-Handling";
-		}
-	
-	public void empty(){			// leert den Stack
-		//Methoden ...
-	}
-	
-	public void push(Object element){	// legt ein Element auf den Stack
-		//Methoden ...
-	}
+public abstract class Stack
+{
+    /**
+     * gibt eine Versionsnummer zurück
+     * diese Methode dient dazu, die verschiedenen Implementierungen zu unterscheiden;
+     * für jede neue Implementierung muss der Text angepasst werden.
+     * return "Aufgabe 1.a - Stack; Implementierung als Array mit Exception-Handling";
+     * return "Version 1.b - Stack; Implementierung als verkettete Liste mit Exception-Handling";
+     * @return type of stack implementation
+     */
+    public abstract String version();
 
-	public Object pop(){				// nimmt ein Element vom Stack
-		//Methoden ...
-		return null; // Dummy-Wert
-	}
-	
-	public int size(){				// aktuelle Anzahl Elemente in Stack
-		//Methoden ...
-		return 0; // Dummy-Wert
-	}
-	
-	public boolean isEmpty(){		// ist der Stack leer?
-		//Methoden ...
-		return true; // Dummy-Wert
-	}
-	
-	public boolean isFull(){		// ist der Stack voll?
-		//Methoden ...
-		return true; // Dummy-Wert
-	}
-	
-	public Object peek(){			// liest oberstes Element vom Stack, 
-									// ohne es zu vom Stack zu entfernen
-		//Methoden ...
-		return null; // Dummy-Wert
-	}
+    /**
+     * leert den Stack
+     */
+    public abstract void empty();
 
-	
-	public String toString(){		// Gibt einen String aus, der den Stack repräsentiert;
-									// Format: Wert1 Wert2 Wert3 [Top-Wert]
-									//	also z.B. 5 8 1 10 [9]
-		//Methoden ...
-		return "[x]"; // Dummy-Wert
-	}
-	
+    /**
+     * legt ein Element auf den Stack
+     *
+     * @param element element das auf den Stack soll
+     */
+    public abstract void push(Object element);
+
+    /**
+     * nimmt ein Element vom Stack
+     *
+     * @return zuletzt auf den Stack gelegtes Element
+     */
+    public abstract Object pop();
+
+    /**
+     * Gibt die momentane Groesse des Stack zurueck
+     *
+     * @return Groesse des Stack
+     */
+    public abstract int size();
+
+    /**
+     * Prueft den Stack auf leer sein
+     *
+     * @return true wenn Stack leer ist
+     */
+    public abstract boolean isEmpty();
+
+    /**
+     * Prueft den Stack auf vollsein
+     *
+     * @return true wenn ein weiterer push eine Exception ausloesen wuerde
+     */
+    public abstract boolean isFull();
+
+    /**
+     * Liest das oberste Element vom Stack, ohne es vom Stack zu nehmen
+     *
+     * @return oberstes Stack Element
+     */
+    public abstract Object peek();
+
+    /**
+     * Gibt einen String aus, der den Stack repraesentiert.<br>
+     * Format: Wert 1 Wert 2 Wert 3 [Top-Wert]
+     *
+     * @return String representation des Stack
+     */
+    @Override
+    public abstract String toString();
+
 }

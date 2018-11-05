@@ -2,7 +2,6 @@ package de.hft.wiest_wolf;
 
 /**
  *
- * @author Lukas Wiest
  * @author Erik Wolf
  */
 public class ArrayStack extends stack.Stack

@@ -3,7 +3,6 @@ package de.hft.wiest_wolf;
 /**
  *
  * @author Lukas Wiest
- * @author Erik Wolf
  */
 public class ListStack extends stack.Stack
 {

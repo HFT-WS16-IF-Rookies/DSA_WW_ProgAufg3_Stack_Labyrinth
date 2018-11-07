@@ -59,14 +59,14 @@ public abstract class Stack
      *
      * @param element element das auf den Stack soll
      */
-    public abstract void push(Object element);
+    public abstract void push(Object element) throws StackFullException;
 
     /**
      * nimmt ein Element vom Stack
      *
      * @return zuletzt auf den Stack gelegtes Element
      */
-    public abstract Object pop();
+    public abstract Object pop()throws StackEmptyException;
 
     /**
      * Gibt die momentane Groesse des Stack zurueck
@@ -94,7 +94,7 @@ public abstract class Stack
      *
      * @return oberstes Stack Element
      */
-    public abstract Object peek();
+    public abstract Object peek() throws StackEmptyException;
 
     /**
      * Gibt einen String aus, der den Stack repraesentiert.<br>

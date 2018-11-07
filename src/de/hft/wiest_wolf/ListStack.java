@@ -1,6 +1,7 @@
 package de.hft.wiest_wolf;
 
-import java.util.LinkedList;
+import stack.Link;
+import stack.StackEmptyException;
 
 /**
  *
@@ -8,7 +9,7 @@ import java.util.LinkedList;
  */
 public class ListStack extends stack.Stack
 {
-    LinkedList<Object> stack = new LinkedList<>();
+    private Link current = null;
 
     @Override
     public String version()
@@ -19,33 +20,36 @@ public class ListStack extends stack.Stack
     @Override
     public void empty()
     {
-        stack.clear();
+        current = null;
     }
 
     @Override
     public void push(Object element)
     {
-        stack.addLast(element);
+        current = new Link(element, current);
     }
 
     @Override
-    public Object pop()
+    public Object pop() throws StackEmptyException
     {
-        Object toReturn = this.peek();
-        stack.removeLast();
+        Object toReturn = peek();
+        current = current.getNext();
         return toReturn;
     }
 
     @Override
     public int size()
     {
-        return stack.size();
+        if (current == null)
+            return 0;
+        else
+            return current.getElement();
     }
 
     @Override
     public boolean isEmpty()
     {
-        return stack.isEmpty();
+        return (current == null);
     }
 
     @Override
@@ -55,22 +59,33 @@ public class ListStack extends stack.Stack
     }
 
     @Override
-    public Object peek()
+    public Object peek() throws StackEmptyException
     {
-        return stack.getLast();
+        if (current == null)
+            throw new StackEmptyException();
+
+        return current.getData();
     }
 
     @Override
     public String toString()
     {
+        if (isEmpty())
+            return "";
+
+        Object[] objArr = new Object[current.getElement()];
         StringBuilder buf = new StringBuilder();
-        for (int i=0; i<stack.size()-1; i++)
+
+        for (Link l=current; l != null; l=l.getNext())
+            objArr[l.getElement()-1] = l.getData();
+
+        for (int i=0; i<objArr.length-1; i++)
         {
-            buf.append(stack.get(i).toString());
+            buf.append(objArr[i].toString());
             buf.append(" ");
         }
         buf.append("[");
-        buf.append(stack.getLast().toString());
+        buf.append(objArr[objArr.length-1]);
         buf.append("]");
         return buf.toString();
     }

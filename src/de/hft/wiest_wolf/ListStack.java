@@ -1,64 +1,78 @@
 package de.hft.wiest_wolf;
 
+import java.util.LinkedList;
+
 /**
  *
  * @author Lukas Wiest
  */
 public class ListStack extends stack.Stack
 {
+    LinkedList<Object> stack = new LinkedList<>();
 
     @Override
     public String version()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Version 1.b - Stack; Implementierung als verkettete Liste mit Exception-Handling";
     }
 
     @Override
     public void empty()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        stack.clear();
     }
 
     @Override
     public void push(Object element)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        stack.addLast(element);
     }
 
     @Override
     public Object pop()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Object toReturn = this.peek();
+        stack.removeLast();
+        return toReturn;
     }
 
     @Override
     public int size()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return stack.size();
     }
 
     @Override
     public boolean isEmpty()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return stack.isEmpty();
     }
 
     @Override
     public boolean isFull()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return false;
     }
 
     @Override
     public Object peek()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return stack.getLast();
     }
 
     @Override
     public String toString()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        StringBuilder buf = new StringBuilder();
+        for (int i=0; i<stack.size()-1; i++)
+        {
+            buf.append(stack.get(i).toString());
+            buf.append(" ");
+        }
+        buf.append("[");
+        buf.append(stack.getLast().toString());
+        buf.append("]");
+        return buf.toString();
     }
 
 }

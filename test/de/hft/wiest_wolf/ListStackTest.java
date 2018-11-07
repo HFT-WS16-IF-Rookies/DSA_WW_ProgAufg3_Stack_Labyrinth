@@ -11,6 +11,13 @@ import stack.*;
  */
 public class ListStackTest
 {
+    @Test(expected = stack.StackEmptyException.class)
+    public void testEmptyException()
+    {
+        Stack instance = new ListStack();
+        instance.pop();
+    }
+
     @Test
     public void testVersion()
     {

@@ -11,6 +11,21 @@ import stack.*;
  */
 public class ArrayStackTest
 {
+    @Test(expected = stack.StackEmptyException.class)
+    public void testEmptyException()
+    {
+        Stack instance = new ArrayStack();
+        instance.pop();
+    }
+
+    @Test(expected = stack.StackFullException.class)
+    public void testFullException()
+    {
+        Stack instance = new ArrayStack();
+        for(;;)
+            instance.push(0);
+    }
+
     @Test
     public void testVersion()
     {

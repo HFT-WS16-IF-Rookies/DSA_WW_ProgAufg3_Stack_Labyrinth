@@ -24,18 +24,58 @@ package stack;
 public class Link
 {
 
-    protected Object data;
-    protected Link next;
+    private Object data;
+    private Link next;
+    private int element;
 
     public Link()
-    {				// Erzeugt ein neues, leeres Link-Objekt
+    {
+        // Erzeugt ein neues, leeres Link-Objekt
         this.data = null;
         this.next = null;
+        this.element = 1;
     }
 
     public Link(Object data)
-    {	// Erzeugt ein neues, gefülltes Link-Objekt
+    {
+        // Erzeugt ein neues, gefülltes Link-Objekt
         this.data = data;
         this.next = null;
+        this.element = 1;
+    }
+
+    public Link(Object data, Link next)
+    {
+        this(data);
+        this.next = next;
+        if (this.next == null)
+            this.element = 1;
+        else
+            this.element = this.next.element +1;
+    }
+
+    public Object getData()
+    {
+        return data;
+    }
+
+    public Link getNext()
+    {
+        return next;
+    }
+
+    public int getElement()
+    {
+        return this.element;
+    }
+
+    public void setData(Object data)
+    {
+        this.data = data;
+    }
+
+    public void setNext(Link next)
+    {
+        this.next = next;
     }
 }

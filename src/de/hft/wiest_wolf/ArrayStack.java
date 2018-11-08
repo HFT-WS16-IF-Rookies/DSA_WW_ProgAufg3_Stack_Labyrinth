@@ -22,6 +22,7 @@ public class ArrayStack extends stack.Stack
     public void empty()
     {
     	stack = new Object [50];
+        top = 0;
     }
 
     @Override
@@ -69,7 +70,7 @@ public class ArrayStack extends stack.Stack
     {
     	if(top < 1)
     		throw new StackEmptyException();
-    	return stack[--top];
+    	return stack[top-1];
     }
 
     @Override
@@ -78,9 +79,9 @@ public class ArrayStack extends stack.Stack
     	String tmp = "";
     	for(int i = 0; i < top-1; i++)
     	{
-    		tmp += stack[i] + "\t";
+    		tmp += stack[i] + " ";
     	}
-    	tmp +="["+stack[top - 1] + "]\t";
+    	tmp +="["+stack[top - 1] + "]";
     	return tmp;
     }
     

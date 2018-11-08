@@ -1,64 +1,87 @@
 package de.hft.wiest_wolf;
 
+import stack.StackEmptyException;
+import stack.StackFullException;
+
 /**
  *
  * @author Erik Wolf
  */
 public class ArrayStack extends stack.Stack
 {
+	private Object[] stack = new Object[50];
+	int top = 0;
 
     @Override
     public String version()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	return "Aufgabe 1.a - Stack; Implementierung als Array mit Exception-Handling";
     }
 
     @Override
     public void empty()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	stack = new Object [50];
     }
 
     @Override
-    public void push(Object element)
+    public void push(Object element) throws StackFullException
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	if(top >= stack.length)
+    		throw new StackFullException();
+		stack[top++] = element;
     }
 
     @Override
-    public Object pop()
+    public Object pop() throws StackEmptyException
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	if(top < 1)
+    		throw new StackEmptyException();
+		Object tmp= stack[--top];
+		stack[top] = null;
+		return tmp;
     }
 
     @Override
     public int size()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	return top;
     }
 
     @Override
     public boolean isEmpty()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	if(top>0)
+    		return false;
+    	return true;
     }
 
     @Override
     public boolean isFull()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	if(top >= stack.length)
+    		return true;
+    	return false;
     }
 
     @Override
-    public Object peek()
+    public Object peek() throws StackEmptyException
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	if(top < 1)
+    		throw new StackEmptyException();
+    	return stack[--top];
     }
 
     @Override
     public String toString()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	String tmp = "";
+    	for(int i = 0; i < top-1; i++)
+    	{
+    		tmp += stack[i] + "\t";
+    	}
+    	tmp +="["+stack[top - 1] + "]\t";
+    	return tmp;
     }
     
 }

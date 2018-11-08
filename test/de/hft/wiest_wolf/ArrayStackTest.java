@@ -30,7 +30,7 @@ public class ArrayStackTest
     public void testVersion()
     {
         Stack instance = new ArrayStack();
-        assertEquals(instance.version(), "Version 1.b - Stack; Implementierung als verkettete Liste mit Exception-Handling");
+        assertEquals("Aufgabe 1.a - Stack; Implementierung als Array mit Exception-Handling", instance.version());
     }
 
     @Test
@@ -39,7 +39,7 @@ public class ArrayStackTest
         Stack instance = new ArrayStack();
         instance.push("ein Element");
         instance.empty();
-        assert(instance.size() == 0);
+        assertEquals(0, instance.size());
     }
 
     @Test
@@ -57,9 +57,9 @@ public class ArrayStackTest
         Stack instance = new ArrayStack();
         String expected = "ein Element";
         instance.push(expected);
-        assert(instance.size() == 1);
+        assertEquals(1, instance.size());
         assertEquals(expected, instance.pop());
-        assert(instance.size() == 0);
+        assertEquals(0, instance.size());
     }
 
     @Test
@@ -70,7 +70,7 @@ public class ArrayStackTest
         instance.push(15);
         instance.push("drittes Elemen");
         instance.pop();
-        assert(instance.size() == 2);
+        assertEquals(2, instance.size());
     }
 
     @Test
@@ -94,7 +94,7 @@ public class ArrayStackTest
         String expected = "ein Element";
         instance.push(expected);
         assertEquals(expected, instance.peek());
-        assert(instance.size() == 1);
+        assertEquals(1, instance.size());
     }
 
     @Test

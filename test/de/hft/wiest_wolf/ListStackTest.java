@@ -22,7 +22,7 @@ public class ListStackTest
     public void testVersion()
     {
         Stack instance = new ListStack();
-        assertEquals(instance.version(), "Version 1.b - Stack; Implementierung als verkettete Liste mit Exception-Handling");
+        assertEquals("Version 1.b - Stack; Implementierung als verkettete Liste mit Exception-Handling", instance.version());
     }
 
     @Test
@@ -31,7 +31,7 @@ public class ListStackTest
         Stack instance = new ListStack();
         instance.push("ein Element");
         instance.empty();
-        assert(instance.size() == 0);
+        assertEquals(0, instance.size());
     }
 
     @Test
@@ -49,9 +49,9 @@ public class ListStackTest
         Stack instance = new ListStack();
         String expected = "ein Element";
         instance.push(expected);
-        assert(instance.size() == 1);
+        assertEquals(1, instance.size());
         assertEquals(expected, instance.pop());
-        assert(instance.size() == 0);
+        assertEquals(0, instance.size());
     }
 
     @Test
@@ -62,7 +62,7 @@ public class ListStackTest
         instance.push(15);
         instance.push("drittes Elemen");
         instance.pop();
-        assert(instance.size() == 2);
+        assertEquals(2, instance.size());
     }
 
     @Test
@@ -86,7 +86,7 @@ public class ListStackTest
         String expected = "ein Element";
         instance.push(expected);
         assertEquals(expected, instance.peek());
-        assert(instance.size() == 1);
+        assertEquals(1, instance.size());
     }
 
     @Test
